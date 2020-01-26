@@ -1,0 +1,16 @@
+header {
+  display: flex;
+  color: #3c3c3c;
+  background-color: #66c772;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.score {
+  font-size: 2em;
+}
