@@ -4,7 +4,7 @@ import Menu from '../Menu/Menu';
 
 const Header = (props) => {
   return (
-    <header>
+    <header className="text-white bg-primary">
       <Menu />
       <div className="header">
         <h1>JS interviewer</h1>

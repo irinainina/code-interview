@@ -6,6 +6,7 @@ nav {
   --transition-time: 500ms;
   position: absolute;
   width: 400px;
+  height: 100vh;
   padding-top: 50px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -149,7 +150,7 @@ nav .sub-menu ol li a {
 nav .sub-menu-btn {
   --icon-width: 40px;
   position: absolute;
-  top: 6%;
+  top: 1%;
   left: 10%;
   width: var(--icon-width);
   height: var(--icon-width);
@@ -205,7 +206,7 @@ nav .menu-btn {
           align-items: center;
   --icon-width: 25px;
   position: absolute;
-  top: 0;
+  top: 1%;
   right: -15%;
   width: calc(var(--icon-width) + 25px);
   height: calc(var(--icon-width) + 25px);
