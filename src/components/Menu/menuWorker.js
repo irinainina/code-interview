@@ -2,7 +2,6 @@
 export default function menuWorker() {
   (function () {
     const nav = document.querySelector('nav');
-    console.log(nav);
     const navLinksContainer = document.querySelector('.nav-links');
     const navLinks = [...document.querySelectorAll('.link')];
     const menuBtn = document.querySelector('.menu-btn');
@@ -32,7 +31,7 @@ export default function menuWorker() {
       navLinksContainer.addEventListener("mouseout", function () {
         hoverEl.style.setProperty("opacity", "0");
       });
-        
+
       link.addEventListener("click", function () {
         let hoverEl = navLinksContainer.querySelector(".hover-el");
         hoverEl.style.opacity = '0';
@@ -40,19 +39,22 @@ export default function menuWorker() {
       });
     });
 
-    menuBtn.addEventListener("click", function () {
-      nav.classList.toggle("nav-open");
-      menuBtn.classList.toggle("close");
+    menuBtn.addEventListener('click', function () {
+      nav.classList.toggle('nav-open');
+      menuBtn.classList.toggle('close');
     });
-    subMenuBtn.addEventListener("click", function () {
-      nav.classList.toggle("sub-menu-open");
+
+    subMenuBtn.addEventListener('click', function () {
+      nav.classList.toggle('sub-menu-open');
       removeSubmenu();
     });
 
     function toggleSubmenu(el) {
       let subMenu = nav.querySelector(".sub-menu");
-      if (el.children[1]) {
-        createSubmenu(el);
+
+      if (el.querySelector('.sub-link-wrapper')) {
+        const subEl = el.querySelector('.sub-link-wrapper');
+        createSubmenu(subEl);
       } else if (nav.contains(subMenu)) {
         removeSubmenu();
       } else {
@@ -61,17 +63,20 @@ export default function menuWorker() {
     }
 
     function createSubmenu(el) {
-      let subMenuContainer = document.createElement("div");
-      subMenuContainer.className = "sub-menu";
-      let subMenuItem = el.children[1].cloneNode(true);
+      let subMenuContainer = document.createElement('div');
+      subMenuContainer.className = 'sub-menu';
+      let subMenuItem = el.cloneNode(true);
       let subMenuItemList = [...subMenuItem.children];
+
       subMenuItemList.forEach((item, index) => {
-        item.classList.add("off-menu");
-        item.style.setProperty("--delay", `${index * 40}ms`);
+        item.classList.add('off-menu');
+        item.style.setProperty('--delay', `${index * 40}ms`);
       });
+
       nav.classList.toggle("sub-menu-open");
       nav.appendChild(subMenuContainer);
       subMenuContainer.appendChild(subMenuItem);
+
       setTimeout(function () {
         subMenuItemList.forEach(item => {
           item.classList.remove("off-menu");
@@ -79,6 +84,7 @@ export default function menuWorker() {
         });
       }, 200);
     }
+
     function removeSubmenu() {
       let subMenu = nav.querySelector(".sub-menu");
       let subMenuItemList = [...subMenu.children[0].children];
